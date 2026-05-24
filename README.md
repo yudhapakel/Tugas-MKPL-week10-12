@@ -1,34 +1,29 @@
-# Tugas MKPL Week 10-12 - Java Maven CI
+# Grade Calculator App
 
-Project ini dibuat untuk tugas Manajemen Konfigurasi Perangkat Lunak.
-Project menggunakan Java Maven, unit testing, GitHub Actions, dan security scanning dengan Trivy.
+## Deskripsi Aplikasi
+Aplikasi ini adalah project Java Maven sederhana untuk menghitung grade mahasiswa berdasarkan nilai angka.
 
-## Fitur
+## Aturan Grade
+- 85 - 100 = A
+- 70 - 84 = B
+- 55 - 69 = C
+- 40 - 54 = D
+- 0 - 39 = E
 
-- Konversi nilai angka menjadi grade A-E
-- Validasi kelulusan berdasarkan nilai minimum
-- Unit test menggunakan JUnit assertion
-- CI otomatis menggunakan GitHub Actions
-- Security scan menggunakan Trivy
+## Testing
+Testing dilakukan menggunakan JUnit. Assertion digunakan untuk memastikan logic grade calculator berjalan sesuai aturan.
 
-## Cara Menjalankan Test Lokal
+Assertion yang digunakan:
+- `assertEquals`
+- `assertTrue`
+- `false` (assertFalse)
+- `assertThrows`
 
-```bash
-mvn clean test
-```
+## Git Workflow
+Setiap anggota membuat branch masing-masing, melakukan commit, push, lalu membuat Pull Request ke branch main.
 
 ## GitHub Actions
+GitHub Actions digunakan untuk menjalankan CI secara otomatis setiap ada push atau pull request.
 
-Workflow akan berjalan otomatis pada:
-
-- Setiap push ke branch apapun
-- Setiap pull request ke branch `main`
-
-Workflow terdiri dari dua job:
-
-1. `build-test`: melakukan checkout repository, setup Java 17, lalu menjalankan `mvn clean test`.
-2. `security-scan`: menjalankan Trivy untuk mendeteksi vulnerability pada file/dependency project.
-
-## Tools Security Scan
-
-Tools yang digunakan adalah Trivy. Trivy merupakan vulnerability scanner yang dapat memeriksa dependency, filesystem, container image, dan konfigurasi project. Pada project ini, Trivy digunakan di GitHub Actions untuk mendeteksi potensi kerentanan keamanan setiap kali ada push atau pull request.
+## Security Scan
+Security scan dilakukan menggunakan Trivy untuk mendeteksi potensi vulnerability pada project.
